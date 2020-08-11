@@ -60,13 +60,11 @@ def reset_save():
         if(GPIO.input(19) == 1): # Fazer verificar uma borda
             cont = 0
             time.sleep(0.5)
-            print("Reset")
 
 def get_rot_total():
     global cont_total
     while(1):
         if(GPIO.input(16) == 1):  # Fazer verificar uma borda
-            print("Passou aq2")
             espeak.set_parameter(espeak.Parameter.Rate, 150, 0)
             espeak.synth("Foram dadas" + str(cont_total) + "voltas.")
             espeak.set_parameter(espeak.Parameter.Rate, 150, 0)
