@@ -15,16 +15,6 @@ espeak.set_voice('brazil')
 espeak.set_parameter(espeak.Parameter.Rate, 175, 0)
 GPIO.setup(26 , GPIO.OUT)
 
-'''
-Simulação com o PWM
-
-pwm = GPIO.PWM(26, 1) # Canal, Frequencia
-pwm.start(50)         # Duty cicle
-pwm.ChangeFrequency(nova_freq)
-pwm.ChangeDutyCycle(novo_dc)
-pwm.stop()
-'''
-
 espeak.synth("Vamos começar")
 
 cont = 0
@@ -43,8 +33,7 @@ def frequencia():
     return freq
 
 '''
-Retirada da fala de velocidade, para
-não ficar confuso
+# Retirada da fala de velocidade, para não ficar confuso
 
 class x_rpm(Thread):
     def __init__(self, event):
@@ -62,8 +51,7 @@ class x_rpm(Thread):
             x1 = x2
             espeak.set_parameter(espeak.Parameter.Rate, 150, 0)
             espeak.synth("Sua RPM atual é de:" + str(int(rpm)))
-            espeak.set_parameter(espeak.Parameter.Rate, 375, 0)
-            
+            espeak.set_parameter(espeak.Parameter.Rate, 375, 0) 
 '''
 
 def reset_save():
@@ -73,7 +61,6 @@ def reset_save():
             cont = 0
             time.sleep(0.5)
             print("Reset")
-
 
 def get_rot_total():
     global cont_total
@@ -91,7 +78,7 @@ t1 = threading.Thread(target=reset_save)
 t1.start()
 
 '''
-Retorna a RPM relativa a cada 15seg
+# Retorna a RPM relativa a cada 15seg
 
 stopFlag1 = Event()
 get_rpm = x_rpm(stopFlag1)
