@@ -50,11 +50,11 @@ def get_rot_total():
             time.sleep(0.5)
              
 			 
-# Se GPIO(19) acionado -> Reseta e Salva o intervalo
+# Se GPIO(19) acionado, reseta e Salva o intervalo
 t1 = threading.Thread(target=reset_save)
 t1.start()
 
-# Se GPIO(16) acionado -> Retorna a distancia total
+# Se GPIO(16) acionado, retorna a distancia total
 t2 = threading.Thread(target=get_rot_total)
 t2.start()
 
@@ -69,9 +69,7 @@ while(freq < 1500):
         cont_total = cont_total + 1
         
         if(cont % 500 == 0):
-		
-			# Retornando contagens em áudio
-            espeak.synth(str(cont)) 
+            espeak.synth(str(cont)) # Contagens em áudio
         
     elif(freq  >= 200):
             GPIO.wait_for_edge(20, GPIO.RISING)
